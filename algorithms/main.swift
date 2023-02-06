@@ -4,8 +4,14 @@
 //
 //  Created by Артем Макар on 30.01.23.
 //
-//
-//import Foundation
+
+
+
+// ЯНДЕКС КОНТЕСТЫ, тренировка по алгоритмам
+
+
+
+import Foundation
 //
 //C.Все дороги ведут в Рим
 //import Foundation
@@ -322,4 +328,292 @@
 //    }
 //} else {
 //    print("NO SOLUTION")
+//}
+
+//I. Сапер
+//import Foundation
+//let firstString = readLine()
+//let values = firstString!.components(separatedBy: " ")
+//var dict: [[Int]: Int] = [:]
+//for i in 0..<Int(values[2])!{
+//
+//    var coordString = readLine()
+//    var coord = coordString!.components(separatedBy: " ")
+//    dict[[Int(coord[0])!, Int(coord[1])!]] = -100
+//    for j in 0..<8 {
+//        var a = 0
+//        var b = 0
+//        switch j {
+//        case 0 : a = 0; b = 1
+//        case 1 : a = 1; b = 1
+//        case 2 : a = 1; b = 0
+//
+//        case 3 : a = -1; b = 0
+//        case 4 : a = 0; b = -1
+//        case 5 : a = -1; b = -1
+//
+//        case 6 : a = 1; b = -1
+//        case 7 : a = -1; b = 1
+//        default: break
+//        }
+//        if dict[[Int(coord[0])! + a, Int(coord[1])! + b]] != nil {
+//            dict[[Int(coord[0])! + a, Int(coord[1])! + b]]! += 1
+//        } else {//if dict[[Int(coord[0])! + a, Int(coord[1])! + b]]! > -1 {
+//            dict[[Int(coord[0])! + a, Int(coord[1])! + b]] = 0
+//            dict[[Int(coord[0])! + a, Int(coord[1])! + b]]! += 1
+//        }
+//    }
+//}
+//for i in 1...Int(values[0])!{
+//    var stringTotal = ""
+//    for j in 1...Int(values[1])!{
+//        //print(dict[[i,j]] ?? "*", i, j )
+//        if dict[[i,j]] ?? 0 > -1 {
+//            stringTotal += "\(dict[[i,j]] ?? 0) "
+//        } else {
+//            stringTotal += "* "
+//        }
+//    }
+//    stringTotal.removeLast()
+//    print(stringTotal)
+//}
+
+//J. Треугольник Максима 6test wa
+
+//import Foundation
+//var count = readLine()
+//var values = (min: 30.0, max: 4000.0)
+//var early = 0.0
+//for i in 0..<Int(count!)! {
+//    if i == 0 {
+//        early = Double(readLine()!)!
+//    } else {
+//        let value = (readLine())?.components(separatedBy: " ")
+//        if value![1].first == "c" {
+//            if Double(value![0])! > early {
+//                values = (min: ((Double(value![0])! + early) / 2), max: values.max )
+//            } else {
+//                values = (min: values.min, max: ((Double(value![0])! + early) / 2) )
+//            }
+//        } else {
+//            if Double(value![0])! > early {
+//                values = (min: values.min, max: ((Double(value![0])! + early) / 2))
+//            } else {
+//                values = (min: ((Double(value![0])! + early) / 2), max: values.max )
+//
+//            }
+//        }
+//        early = Double(value![0])!
+//    }
+//}
+//print(values.min, values.max)
+
+//E. Чемпионат по метанию коровьих лепешек
+//import Foundation
+//var a = readLine()
+//var b = readLine()
+//var c = b!.components(separatedBy: " ")
+//var abba: [Int] = []
+//    for i in c {
+//        abba.append(Int(i)!)
+//    }
+//var top = 0
+//var topPos = 0
+//for (j, i) in c.enumerated() {
+//    if Int(i)! > top{
+//        top = Int(i)!
+//        topPos = j
+//    }
+//}
+//var result = 0
+//var lastValue = 0
+//for (j, i) in c.enumerated() {
+//    if Int(i)! % 10 == 5 && j > topPos && j < c.count - 1 &&  Int(c[j+1])! < Int(i)! && Int(i)! > lastValue{
+//        lastValue = Int(i)!
+//        var ac = 1
+//        for f in abba.sorted(by: >){
+//            if f == lastValue {
+//                result = ac
+//            } else {
+//                ac += 1
+//            }
+//        }
+//    }
+//}
+//print(result)
+
+
+//A. Количество различных чисел
+//import Foundation
+//var a = readLine()
+//var b = a!.components(separatedBy: " ")
+//var dict: [Int: Int] = [:]
+//for i in b {
+//    dict[Int(i)!] = 1
+//}
+//print(dict.count)
+
+//B. Пересечение множеств
+//var a = readLine()!.split(separator: " ").map { Int($0)! }
+//var b = readLine()!.split(separator: " ").map { Int($0)! }
+//var total = ""
+//for i in Set(a).intersection(Set(b)).sorted() {
+//    total += "\(i)" + " "
+//}
+//total.removeLast()
+//print(total)
+
+//C. Кубики
+//var cubes = readLine()!.split(separator: " ")
+//var cubesValue: (ann: Set<Int>, boris: Set<Int>) = ([], [])
+//for _ in 0..<Int(cubes[0])! {
+//    cubesValue.ann.insert(Int(readLine()!)!)
+//}
+//for _ in 0..<Int(cubes[1])! {
+//    cubesValue.boris.insert(Int(readLine()!)!)
+//}
+//var intersection = cubesValue.ann.intersection(cubesValue.boris).sorted()
+//var fisrtPrint = ""
+//for i in intersection.sorted() {
+//    fisrtPrint += "\(i) "
+//}
+//print(intersection.count, "\n\(fisrtPrint)")
+//var secondPrint = ""
+//for i in cubesValue.ann.subtracting(cubesValue.boris).sorted() {
+//    secondPrint += "\(i) "
+//}
+//print(cubesValue.ann.subtracting(cubesValue.boris).count, "\n\(secondPrint)")
+//var thridPrint = ""
+//for i in cubesValue.boris.subtracting(cubesValue.ann).sorted() {
+//    thridPrint += "\(i) "
+//}
+//print(cubesValue.boris.subtracting(cubesValue.ann).count, "\n\(thridPrint)")
+
+//D. Количество слов в тексте
+
+//import Foundation
+//
+//let fileName = "input.txt"
+//
+//func readNums() {
+//guard let line = try? String(contentsOfFile: fileName) else {
+//return
+//}
+//let split = line.split(separator: "\n")
+//var words: Set<String> = []
+//for i in split {
+//    for j in i.split(separator: " ") {
+//        words.insert(String(j))
+//    }
+//}
+//let result = String(words.count)
+//try? result.write(toFile: "output.txt", atomically: true, encoding: .utf8)
+//}
+//
+//readNums()
+
+
+//E. OpenCalculator
+//var numbers = readLine()!.split(separator: " ")
+//var number: [String.SubSequence] = []
+//for i in readLine()! {
+//    number.append("\(i)")
+//}
+//print(Set(number).subtracting(Set(numbers)).count)
+
+//F. Инопланетный геном
+//var firstString: [String] = []
+//for i in readLine()! {
+//    firstString.append("\(i)")
+//}
+//var secondString: [String] = []
+//for i in readLine()! {
+//    secondString.append("\(i)")
+//}
+//var firstArr: [String: Int] = [:]
+//var secondDict: [String: Int] = [:]
+//for (j,_) in firstString.enumerated() {
+//    if j != firstString.count - 1 {
+//        if firstArr["\(firstString[j])\(firstString[j+1])"] != nil {
+//            firstArr["\(firstString[j])\(firstString[j+1])"]! += 1
+//        } else {
+//            firstArr["\(firstString[j])\(firstString[j+1])"] = 1
+//        }
+//    }
+//}
+//for (j,_) in secondString.enumerated() {
+//    if j != secondString.count - 1 {
+//        if secondDict["\(secondString[j])\(secondString[j+1])"] != nil {
+//            secondDict["\(secondString[j])\(secondString[j+1])"]! += 1
+//        } else {
+//            secondDict["\(secondString[j])\(secondString[j+1])"] = 1
+//        }
+//    }
+//}
+////print(firstArr, secondDict)
+//var total: Int = 0
+//for (key, _) in secondDict {
+//    if firstArr[key] != nil {
+//        //print(firstArr[key]!, secondDict[key]!, key)
+//        total += firstArr[key]!
+//    }
+//}
+//print(total)
+//
+
+
+//G. Черепахи
+//let count = Int(readLine()!)!
+//var setOfInt:Set<Int> = []
+//
+//for _ in 0..<count  {
+//    let values = readLine()!.split(separator: " ").map{Int($0)!}
+//    if values.reduce(0){$0 + $1} + 1 == count && values[0] >= 0 && values[1] >= 0 {
+//        setOfInt.insert(values[0])
+//    }
+//}
+//print(setOfInt.count)
+
+
+//H. Злые свинки
+//let count = Int(readLine()!)!
+//var dict: [Int: Bool] = [:]
+//for _ in 0..<count {
+//    let value = readLine()!.split(separator: " ")
+//    dict[Int(value[0])!] = true
+//}
+//print(dict.count)
+
+
+//I. Полиглоты
+//let count = Int(readLine()!)!
+//var dict: [String: Int] = [:]
+//for _ in 0..<count {
+//    let count2 = Int(readLine()!)!
+//    for _ in 0..<count2 {
+//        let value = readLine()!
+//        if dict[value] != nil {
+//            dict[value]! += 1
+//        } else {
+//            dict[value] = 1
+//        }
+//    }
+//}
+//var firstResponse: [String] = []
+//var secondResponse: [String] = []
+//for i in dict {
+//    if i.value == count {
+//        firstResponse.append(i.key)
+//        secondResponse.append(i.key)
+//    } else {
+//        secondResponse.append(i.key)
+//    }
+//}
+//print(firstResponse.count)
+//firstResponse.forEach { str in
+//    print(str)
+//}
+//print(secondResponse.count)
+//secondResponse.forEach { str in
+//    print(str)
 //}
